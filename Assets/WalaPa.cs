@@ -13,10 +13,6 @@ public class WalaPa : MonoBehaviour
     void Start()
     {
         meshrenderer = GetComponent<MeshRenderer>();
-        //for (int i = 0; i < color.Count; i++) 
-        //{
-        //    meshrenderer.material.color = color[Random.Range(0, color.Count)];
-        //}
     }
     private void OnEnable()
     {
