@@ -23,7 +23,8 @@ public class Week3_Rotation : MonoBehaviour
     {
         //RotationInputs();
         //QuaternionRotateTowards();
-        QuaternionSlerp();
+        //QuaternionSlerp();
+        LookRotation();
     }
 
     private void OnGUI()
@@ -60,5 +61,11 @@ public class Week3_Rotation : MonoBehaviour
     {
         transform.rotation = Quaternion.Slerp(transform.rotation, Target_B.rotation, timeCount);
         timeCount = timeCount * Time.time;
+    }
+    void LookRotation()
+    {
+        Vector3 RelativePosition = Target_A.position - transform.position;
+        Quaternion rotation = Quaternion.LookRotation(RelativePosition, Vector3.up);
+        transform.rotation = rotation;
     }
 }
