@@ -7,8 +7,9 @@ public class Week3_Rotation : MonoBehaviour
     public Quaternion CurrentRotation;
     public Vector3 currentEulerangles;
     float x, y, z;
+    float timeCount = 0f;
     public float RotationSpeed;
-    public Transform Target_A;
+    public Transform Target_A, Target_B;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +22,8 @@ public class Week3_Rotation : MonoBehaviour
     void Update()
     {
         //RotationInputs();
-        QuaternionRotateTowards();
+        //QuaternionRotateTowards();
+        QuaternionSlerp();
     }
 
     private void OnGUI()
@@ -53,5 +55,10 @@ public class Week3_Rotation : MonoBehaviour
     {
         var step = RotationSpeed * Time.time;
         transform.rotation = Quaternion.RotateTowards(transform.rotation, Target_A.rotation,step);
+    }
+    void QuaternionSlerp()
+    {
+        transform.rotation = Quaternion.Slerp(transform.rotation, Target_B.rotation, timeCount);
+        timeCount = timeCount * Time.time;
     }
 }
